@@ -36,7 +36,9 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: !Ref AmiId     
+      ImageId: !Ref AmiId 
+      Tag:
+        - Name: !Ref CokerInstance    
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
