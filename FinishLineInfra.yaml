@@ -19,7 +19,7 @@ Parameters:
   AmiId:
     Description: Amazon EC2 AMI
     Type: String
-    Default: ami-amazon-linux-latest
+    Default: ami-0080e4c5bc078760e
   SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
     Type: String
@@ -36,8 +36,7 @@ Resources:
       SecurityGroups:
         - !Ref InstanceSecurityGroup
       KeyName: !Ref KeyName
-      ImageId: !Ref AmiId 
-       
+      ImageId: !Ref AmiId     
   InstanceSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
@@ -47,13 +46,6 @@ Resources:
           FromPort: '22'
           ToPort: '22'
           CidrIp: !Ref SSHLocation
-           IPAddress:
-    Type: AWS::EC2::EIP
-  IPAssoc:
-    Type: AWS::EC2::EIPAssociation
-    Properties:
-      InstanceId: !Ref 'CokerInstance'
-      EIP: !Ref 'IPAddress'
 Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
