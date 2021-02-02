@@ -7,7 +7,7 @@ pipeline {
         AWS_DEFAULT_REGION = ('us-east-1')
     }
     stages {
-        stage('AWSbuild') {
+        stage('Cloudformation') {
             steps {
                 sh 'aws cloudformation create-stack --template-body file:///var/lib/jenkins/workspace/Finishlinelab2/Finishlinelab2/finishlinelab2infra.yml --stack-name CharityInstance --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro'
             }
