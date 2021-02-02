@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('jenkins_aws_key')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins_aws_key')
-        AWS_DEFAULT_REGION= (us-east-1)
+        AWS_DEFAULT_REGION = ('us-east-1')
     }
     stages {
         stage('AWS build') {
