@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: >-
   AWS CloudFormation Sample Template EC2InstanceWithSecurityGroupSample: Create
   an Amazon EC2 instance running the Amazon Linux AMI. The AMI is chosen based
-  on the region in which the stack is run. This example creates an EC2 security
+  on the region in which the stack is run This example creates an EC2 security
   group for the instance to give you SSH access. **WARNING** This template
   creates an Amazon EC2 instance. You will be billed for the AWS resources used
   if you create a stack from this template.
@@ -29,7 +29,7 @@ Parameters:
     AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
 Resources:
-  CokerInstance:
+  CokerWebServer:
     Type: 'AWS::EC2::Instance'
     Properties:
       InstanceType: !Ref InstanceType
@@ -39,8 +39,8 @@ Resources:
       ImageId: !Ref AmiId 
       Tags:
         - Key: Name
-          Value: CokerInstance  
-  InstanceSecurityGroup:
+          Value: CokerWebServer  
+  CokerWebServerSG:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: Enable SSH access via port 22
@@ -48,6 +48,27 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
+          CidrIp: !Ref SSHLocation
+  CokerDBServer:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceType
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+      KeyName: !Ref KeyName
+      ImageId: !Ref AmiId 
+      Tags:
+        - Key: Name
+          Value: CokerDBServer   
+
+  CokerDBServerSG:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '3306'
+          ToPort: '3306'
           CidrIp: !Ref SSHLocation
 Outputs:
   InstanceId:
