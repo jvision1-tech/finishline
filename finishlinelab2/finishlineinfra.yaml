@@ -56,12 +56,14 @@ Resources:
   CokerDBSecurityGroup:
     Type: AWS::RDS::DBSecurityGroup
     Properties:
-      DBSecurityGroupIngress:
-      EC2SecurityGroupName:
-        Ref: WebServerSecurityGroup
-      GroupDescription: Frontend Access        
-Outputs:
-  InstanceId:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '3306'
+          ToPort: '3306'
+          CidrIp: !Ref CokerWebServerSecurityGroup        
+  Outputs:
+    InstanceId:
     Description: InstanceId of the newly created EC2 instance
     Value: !Ref CokerInstance
   AZ:
@@ -73,4 +75,4 @@ Outputs:
     Description: Public DNSName of the newly created EC2 instance
     Value: !GetAtt 
       - CokerInstance
-      - PublicDnsName
+      - PublicIp
