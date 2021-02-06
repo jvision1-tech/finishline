@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Cloudformation') {
             steps {
-                sh 'aws cloudformation create-stack --template-body file:///var/lib/jenkins/workspace/first-ci-pipeline/Finishlinelab3/finishlinelab2infra.yml --stack-name CokerWebserver --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro'
+                sh 'aws cloudformation create-stack --template-body file:///var/lib/jenkins/workspace/first-ci-pipeline/finishlinelab3/finishlinelab3/finishlineinfra.yml --stack-name CokerWebserver --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro'
             }
         }
         stage('Build') {
