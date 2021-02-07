@@ -34,7 +34,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceType
       SecurityGroups:
-        - !Ref CokerWebServerSecurityGroup
+        - !Ref InstanceSecurityGroup
       KeyName: !Ref KeyName
       ImageId: !Ref AmiId 
       Tags:
@@ -61,7 +61,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '3306'
           ToPort: '3306'
-          CidrIp: !Ref CokerWebServerSecurityGroup        
+          CidrIp: !Ref CokerWebServer        
   Outputs:
     InstanceId:
     Description: InstanceId of the newly created EC2 instance
