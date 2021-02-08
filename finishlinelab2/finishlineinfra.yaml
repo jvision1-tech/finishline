@@ -61,7 +61,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '3306'
           ToPort: '3306'
-          SourceSecurityGroupId: !Ref CokerWebServerSG        
+          CidrIp: !Ref CokerWebServerSG        
   Outputs:
     InstanceId:
     Description: InstanceId of the newly created EC2 instance
