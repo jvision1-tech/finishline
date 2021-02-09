@@ -48,11 +48,22 @@ Resources:
        - IpProtocol: tcp
          FromPort:  '80'
          ToPort:  '80'
-         CidrIp: 0.0.0.0/0
+         CidrIp: !Ref SSHLocation
        - IpProtocol: tcp
          FromPort:  '22'
          ToPort:  '22'
-         CidrIp: 0.0.0.0/0          
+         CidrIp: !Ref 'SSHLocation'
+  CokerDBServer:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceType
+      SecurityGroups:
+        - !Ref CokerDBSecurityGroup
+      KeyName: !Ref KeyName
+      ImageId: !Ref AmiId 
+      Tags:
+        - Key: Name
+          Value: CokerDBServer
   CokerDBSecurityGroup:
     Type: AWS::RDS::DBSecurityGroup
     Properties:
@@ -61,7 +72,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '3306'
           ToPort: '3306'
-          CidrIp: !Ref CokerWebServerSG        
+          CidrIp: !Ref SSHLocation        
   Outputs:
     InstanceId:
     Description: InstanceId of the newly created EC2 instance
