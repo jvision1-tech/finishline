@@ -158,7 +158,7 @@ Resources:
                   - 'action=/opt/aws/bin/cfn-init -v '
                   - '         --stack '
                   - !Ref 'AWS::StackName'
-                  - '         --resource JoeWordPress '
+                  - '         --resource CokerWordPress '
                   - '         --configsets wordpress_install '
                   - '         --region '
                   - !Ref 'AWS::Region'
