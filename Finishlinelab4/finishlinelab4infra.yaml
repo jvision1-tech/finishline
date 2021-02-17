@@ -144,8 +144,8 @@ Resources:
                   - |+
 
               mode: '000400'
-              owner: root
-              group: root
+              owner: apache
+              group: apache
             /etc/cfn/hooks.d/cfn-auto-reloader.conf:
               content: !Join 
                 - ''
@@ -233,8 +233,8 @@ Resources:
                   - |
                     '/g" wp-config.php
               mode: '000600'
-              owner: apache
-              group: apache
+              owner: root
+              group: root
           services:
             sysvinit:
               httpd:
