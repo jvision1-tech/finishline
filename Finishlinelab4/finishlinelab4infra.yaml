@@ -232,9 +232,9 @@ Resources:
                   - !Ref DBPassword
                   - |
                     '/g" wp-config.php
-              mode: '000500'
-              owner: root
-              group: root
+              mode: '000600'
+              owner: apache
+              group: apache
           services:
             sysvinit:
               httpd:
