@@ -227,9 +227,9 @@ Resources:
             /var/www/html: http://wordpress.org/latest.tar.gz
   Properties:
    ImageId: !Ref AmiId
-      InstanceType: !Ref: InstanceType
-      KeyName: !Ref: KeyName
-      SecurityGroups: !Ref: WebServerSecurityGroup
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      SecurityGroups: !Ref WebServerSecurityGroup
       Tags:
         - Key: Name
           Value: wordpress
