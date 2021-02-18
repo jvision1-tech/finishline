@@ -229,7 +229,8 @@ Resources:
       ImageId: !Ref AmiId
       InstanceType: !Ref InstanceType
       KeyName: !Ref KeyName
-      SecurityGroups: !Ref WebServerSecurityGroup
+      SecurityGroups: 
+      - !Ref WebServerSecurityGroup
       Tags:
         - Key: Name
           Value: wordpress
