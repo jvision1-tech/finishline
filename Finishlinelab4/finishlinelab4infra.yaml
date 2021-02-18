@@ -225,8 +225,8 @@ Resources:
                 ensureRunning: true
           sources:
             /var/www/html: http://wordpress.org/latest.tar.gz
-  Properties:
-   ImageId: !Ref AmiId
+    Properties:
+      ImageId: !Ref AmiId
       InstanceType: !Ref InstanceType
       KeyName: !Ref KeyName
       SecurityGroups: !Ref WebServerSecurityGroup
