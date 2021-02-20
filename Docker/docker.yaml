@@ -60,10 +60,10 @@ Outputs:
     AZ:
       Description: Availability Zone of the newly created EC2 instance
       Value: !GetAtt 
-      - CokerWebServer
-      - AvailabilityZone
-  PublicDNS:
-    Description: Public DNSName of the newly created EC2 instance
-    Value: !GetAtt 
-      - CokerWebServer
-      - PublicIp
+        - CokerWebServer
+        - AvailabilityZone
+   PublicDNS:
+     Description: Public DNSName of the newly created EC2 instance
+     Value: !GetAtt 
+       - CokerWebServer
+       - PublicIp
