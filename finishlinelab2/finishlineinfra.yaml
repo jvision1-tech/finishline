@@ -53,7 +53,7 @@ Resources:
          FromPort: '22'
          ToPort: '22'
          CidrIp: 0.0.0.0/0          
-    Outputs:
+Outputs:
   PublicDNS:
     Description: Public DNSName of the newly created EC2 instance
     Value: !GetAtt 
