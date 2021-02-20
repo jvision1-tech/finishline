@@ -62,8 +62,8 @@ Outputs:
       Value: !GetAtt 
         - CokerWebServer
         - AvailabilityZone
-   PublicDNS:
-     Description: Public DNSName of the newly created EC2 instance
-     Value: !GetAtt 
-       - CokerWebServer
-       - PublicIp
+    PublicDNS:
+      Description: Public DNSName of the newly created EC2 instance
+      Value: !GetAtt 
+        - CokerWebServer
+        - PublicIp
