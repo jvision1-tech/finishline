@@ -1,31 +1,37 @@
-pipeline {
-    agent any
-
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('aws_jenkins-access')
-        AWS_SECRET_ACCESS_KEY = credentials('aws_jenkins-access')
-        AWS_DEFAULT_REGION = ('us-east-1')
+pipeline { 
+    environment { 
+        registry = "jvision1/coker-boutique" 
+        registryCredential = 'dockerhub-connection' 
+        dockerImage = '' 
     }
-    stages {
-        stage('Cloudformation') {
-            steps {
-                sh "aws cloudformation create-stack --template-body 'file:///var/lib/jenkins/workspace/third-ci-pipeline_docker/Docker/docker.yaml' --stack-name 'finishlinelab' --region 'us-east-1' --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro"
+    agent any 
+    stages { 
+        stage('Cloning our Git') { 
+            steps { 
+                git 'https://github.com/jvision1-tech/finishline.git' 
             }
+        } 
+        stage('Building our image') { 
+            steps { 
+               sh 'cd Staticwebserver1' 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
         }
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+        } 
+        stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        } 
     }
 }
