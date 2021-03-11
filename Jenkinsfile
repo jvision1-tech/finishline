@@ -8,9 +8,9 @@ pipeline {
     stages { 
         stage('Cloning our Git') { 
             steps {
-  //              sh "mkdir coker"
+              sh "mkdir coker"
   //              sh "cd coker" 
-    //            git 'https://github.com/jvision1-tech/finishline.git' 
+    //        git 'https://github.com/jvision1-tech/finishline.git' 
             }
         } 
         stage('Building our image') { 
