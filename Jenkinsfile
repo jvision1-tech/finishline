@@ -6,15 +6,9 @@ pipeline {
     }
     agent any 
     stages { 
-        stage('Cloning our Git') { 
-            steps {
-               sh "cd coker" 
-               git 'https://github.com/jvision1-tech/finishline.git' 
-            }
-        } 
-        stage('Building our image') { 
+       stage('Building our image') { 
             steps { 
-               sh 'cd Staticwebserver1' 
+               sh 'cd/var/lib/jenkins/workspace/coker-boutique_website/Statiswebserver1' 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
