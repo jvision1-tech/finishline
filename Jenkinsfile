@@ -8,9 +8,10 @@ pipeline {
     stages { 
        stage('Building our image') { 
             steps { 
-               sh 'cd /var/lib/jenkins/workspace/coker-boutique_website/Statiswebserver1' 
+               dir ('/var/lib/jenkins/workspace/coker-boutique_website/Statiswebserver1') { 
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" /Statiswebserver1 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                  }
                 }
             } 
         }
