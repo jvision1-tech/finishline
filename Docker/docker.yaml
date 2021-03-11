@@ -52,10 +52,18 @@ Resources:
        - IpProtocol: tcp
          FromPort: '22'
          ToPort: '22'
-         CidrIp: 0.0.0.0/0          
+         CidrIp: 0.0.0.0/0                    
 Outputs:
-  PublicDNS:
-    Description: Public DNSName of the newly created EC2 instance
-    Value: !GetAtt 
-      - CokerWebServer
-      - PublicIp
+    InstanceId:
+      Description: InstanceId of the newly created EC2 instance
+      Value: !Ref CokerWebServer
+    AZ:
+      Description: Availability Zone of the newly created EC2 instance
+      Value: !GetAtt 
+        - CokerWebServer
+        - AvailabilityZone
+    PublicDNS:
+      Description: Public DNSName of the newly created EC2 instance
+      Value: !GetAtt 
+        - CokerWebServer
+        - PublicIp
