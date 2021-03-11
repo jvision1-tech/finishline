@@ -8,7 +8,7 @@ pipeline {
     stages { 
        stage('Building our image') { 
             steps { 
-               sh 'cd /var/lib/jenkins/workspace/coker-boutique_website/Staticwebserver1' 
+               sh 'cd /var/lib/jenkins/workspace/coker-boutique_website/Statiswebserver1' 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
