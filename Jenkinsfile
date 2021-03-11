@@ -10,7 +10,7 @@ pipeline {
             steps { 
                sh 'cd /var/lib/jenkins/workspace/coker-boutique_website/Statiswebserver1' 
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" /Statiswebserver1 
                 }
             } 
         }
