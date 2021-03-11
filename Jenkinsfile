@@ -7,7 +7,9 @@ pipeline {
     agent any 
     stages { 
         stage('Cloning our Git') { 
-            steps { 
+            steps {
+                sh "mkdir coker"
+                sh "cd coker" 
                 git 'https://github.com/jvision1-tech/finishline.git' 
             }
         } 
