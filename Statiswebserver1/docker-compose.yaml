@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+   coker-boutique:
+     image:jvision1/coker-boutique: ${tag}
+     restart: always
+     ports:
+       - "80:80"
+networks: 
+  coker         
