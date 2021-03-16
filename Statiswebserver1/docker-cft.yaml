@@ -34,7 +34,7 @@ Resources:
     Properties:
       InstanceType: !Ref InstanceType
       SecurityGroups:
-        - !Ref CokerWebSecurityGroup
+        - !Ref CokerWebServerSG
       KeyName: !Ref KeyName
       ImageId: !Ref AmiId 
       Tags:
