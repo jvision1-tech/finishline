@@ -40,7 +40,7 @@ Resources:
       Tags:
         - Key: Name
           Value: CokerWebServer
-     UserData:
+      UserData:
         !Base64 |
         #!/bin/bash
         yum update -y
