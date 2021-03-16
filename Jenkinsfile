@@ -34,9 +34,8 @@ pipeline {
         } 
         stage('Cloudformation') {
             steps {
-              dir ('Statiswebserver1') {
-                sh 'pwd'         
-              //  sh "aws cloudformation create-stack --template-body 'file:///docker-cft.yaml' --stack-name 'docker-compose' --region 'us-east-1' --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro" 
+              dir ('Statiswebserver1') { 
+               sh "aws cloudformation create-stack --template-body 'file://docker-cft.yaml' --stack-name 'docker-compose' --region 'us-east-1' --parameter ParameterKey=KeyName,ParameterValue=finishlinelab ParameterKey=InstanceType,ParameterValue=t2.micro" 
               }
             }
         }
